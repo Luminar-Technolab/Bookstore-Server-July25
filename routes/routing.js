@@ -10,5 +10,7 @@ const router = new express.Router()
 router.post('/register',userController.registerController)
 //login
 router.post('/login',userController.loginController)
+//googlelogin
+router.post('/google/sign-in',userController.googleLoginController)
 
 module.exports = router
