@@ -25,3 +25,61 @@ exports.addBookController = async (req,res)=>{
     }
 
 }
+
+//get home books
+exports.getHomePageBooksController = async (req,res)=>{
+    console.log("Inside getHomePageBooksController");
+    try{
+        //get newly added 4 books from db
+        const homeBooks = await books.find().sort({_id:-1}).limit(4)
+        res.status(200).json(homeBooks)
+    }catch(error){
+        console.log(error);        
+        res.status(500).json(error)
+    }
+}
+
+//get all books - user
+exports.getUserAllBookPageController = async (req,res)=>{
+    console.log("Inside getUserAllBoookPageController");
+    //get login user mail from token
+    const loginUserMail = req.payload
+    try{
+        //get all  books from db except loggedin user
+        const allBooks = await books.find({sellerMail:{$ne:loginUserMail}})
+        res.status(200).json(allBooks)
+    }catch(error){
+        console.log(error);        
+        res.status(500).json(error)
+    }
+}
+
+// get all user uploaedd books
+exports.getUserUploadBookProfilePageController = async (req,res)=>{
+    console.log("Inside getUserUploadBookProfilePageController");
+    //get login user mail from token
+    const loginUserMail = req.payload
+    try{
+        //get all  books from db except loggedin user
+        const allUserBooks = await books.find({sellerMail:loginUserMail})
+        res.status(200).json(allUserBooks)
+    }catch(error){
+        console.log(error);        
+        res.status(500).json(error)
+    }
+}
+
+// get all user bought books
+exports.getUserBoughtBookProfilePageController = async (req,res)=>{
+    console.log("Inside getUserBoughtBookProfilePageController");
+    //get login user mail from token
+    const loginUserMail = req.payload
+    try{
+        //get all  books from db except loggedin user
+        const allUserPurchaseBooks = await books.find({buyerMail:loginUserMail})
+        res.status(200).json(allUserPurchaseBooks)
+    }catch(error){
+        console.log(error);        
+        res.status(500).json(error)
+    }
+}
