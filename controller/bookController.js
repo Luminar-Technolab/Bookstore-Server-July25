@@ -26,7 +26,7 @@ exports.addBookController = async (req,res)=>{
 
 }
 
-//get home books
+//get home books - guest user
 exports.getHomePageBooksController = async (req,res)=>{
     console.log("Inside getHomePageBooksController");
     try{
@@ -39,7 +39,7 @@ exports.getHomePageBooksController = async (req,res)=>{
     }
 }
 
-//get all books - user
+//get all books - user : login user
 exports.getUserAllBookPageController = async (req,res)=>{
     console.log("Inside getUserAllBoookPageController");
     //get login user mail from token
@@ -54,7 +54,7 @@ exports.getUserAllBookPageController = async (req,res)=>{
     }
 }
 
-// get all user uploaedd books
+// get all user uploaedd books: login user
 exports.getUserUploadBookProfilePageController = async (req,res)=>{
     console.log("Inside getUserUploadBookProfilePageController");
     //get login user mail from token

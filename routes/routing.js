@@ -15,11 +15,18 @@ router.post('/register',userController.registerController)
 router.post('/login',userController.loginController)
 //googlelogin
 router.post('/google/sign-in',userController.googleLoginController)
+//get hom books
+router.get('/books/home',bookController.getHomePageBooksController)
+
 
 // ------------------authorised user----------------------------
 
 //add book - request body content is formdata
 router.post('/user/book/add',jwtMiddleware,multerMiddleware.array('uploadImages',3),bookController.addBookController)
+//get all books page - 
+router.get('/books/all',jwtMiddleware,bookController.getUserAllBookPageController)
+//get all user upload books page - 
+router.get('/user-books/all',jwtMiddleware,bookController.getUserUploadBookProfilePageController)
 
 
 
