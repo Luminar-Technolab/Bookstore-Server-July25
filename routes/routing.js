@@ -27,6 +27,8 @@ router.post('/user/book/add',jwtMiddleware,multerMiddleware.array('uploadImages'
 router.get('/books/all',jwtMiddleware,bookController.getUserAllBookPageController)
 //get all user upload books page - 
 router.get('/user-books/all',jwtMiddleware,bookController.getUserUploadBookProfilePageController)
+//get all user bought books page - 
+router.get('/user-books/bought',jwtMiddleware,bookController.getUserBoughtBookProfilePageController)
 
 
 
